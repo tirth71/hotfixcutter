@@ -729,7 +729,7 @@ setLayout('butta');resize();requestAnimationFrame(loop);
    if(preset)preset.textContent=dict['Custom quantity']||'Custom quantity';
    document.documentElement.lang=lang;
    try{localStorage.setItem('hotfixCutterLanguage',lang);}catch(e){}
-   renderBatch();
+   if(typeof renderBatch==='function')renderBatch();
  }
  langSelect.value=localStorage.getItem('hotfixCutterLanguage')||'en';
  langSelect.addEventListener('change',()=>applyLanguage(langSelect.value));
@@ -1552,6 +1552,7 @@ setLayout('butta');resize();requestAnimationFrame(loop);
      p5('completeSheetBtn').disabled=true;
    }
  };
+ window.renderBatch=renderBatch;
  renderBatch();
 
 })();

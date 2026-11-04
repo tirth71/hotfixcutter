@@ -99,6 +99,27 @@ li.cur.b{border-left-color:var(--blade)}
 .upload-help{display:block;margin-top:6px;color:var(--muted,#64748b);font-size:.82rem;line-height:1.4}
 
 </style>
+<style id="clean-theme">
+:root,:root[data-theme]{--bg:#f6f7f6;--panel:#fff;--ink:#16201c;--mute:#6b7772;--line:#e3e7e4;--accent:#157a52;--stage:#eef1ef}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1412;--panel:#171e1b;--ink:#e9efec;--mute:#93a19b;--line:#26302c;--accent:#4cc38a;--stage:#0c110f}}
+html,body{font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+body{padding:14px 14px 40px;max-width:720px;line-height:1.45}
+h1{font-size:1.35rem;font-weight:700;margin:6px 0 4px}
+h2{font-size:1.02rem;font-weight:650;margin:22px 0 8px}
+#stage{border-radius:16px;border:1px solid var(--line);height:48vh;min-height:280px}
+.portal,#phase6Calibration,.manual-tools{background:var(--panel)!important;border:1px solid var(--line)!important;border-radius:16px!important;padding:16px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+button,.manual-actions button,#phase4Tools button,#phase6Calibration button{min-height:44px;border-radius:12px!important;border:1px solid var(--line)!important;background:var(--panel)!important;color:var(--ink)!important;font-weight:550;transition:background .15s,transform .05s}
+button:active{transform:scale(.98)}
+button.on{background:color-mix(in srgb,var(--accent) 12%,var(--panel))!important;border-color:var(--accent)!important}
+button.pen{color:var(--pen)!important}button.blade{color:var(--blade)!important}
+button.stop{background:var(--blade)!important;color:#fff!important;border-color:var(--blade)!important}
+.manual-primary,#generatePathsBtn,#autoCalibrateBtn{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+input,select,textarea{font:inherit;font-size:16px;min-height:44px;border-radius:12px!important;border:1px solid var(--line)!important;background:var(--bg)!important;color:var(--ink)!important;padding:10px 12px!important}
+.manual-note,.manual-help,small,.note{color:var(--mute)!important}
+.manual-help,#portalStatus,#pathReport,#detectionSummary{border-radius:12px!important}
+.row{gap:8px}
+@media(max-width:520px){body{padding:10px 10px 32px}.row>button{flex:1 1 calc(50% - 8px)}#stage{height:42vh}}
+</style>
 </head>
 <body>
 <h1>Hotfix Cutter: workflow and machine</h1>

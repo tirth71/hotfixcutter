@@ -336,8 +336,9 @@ input,select,textarea{font:inherit;font-size:16px;min-height:44px;border-radius:
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+const p5 = id => document.getElementById(id);
 (function(){
-var SW=330,SL=762,HX=SW/2,HZ=SL/2;
+ var SW=330,SL=762,HX=SW/2,HZ=SL/2;
 var layouts={butta:[],patta:[]};
 for(var r=0;r<4;r++)for(var c=0;c<3;c++)layouts.butta.push({x:22+c*100,y:30+r*170,w:86,h:150});
 [15,125,235].forEach(function(x){layouts.patta.push({x:x,y:25,w:80,h:710});});

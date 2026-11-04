@@ -733,14 +733,6 @@ setLayout('butta');resize();requestAnimationFrame(loop);
  }
  langSelect.value=localStorage.getItem('hotfixCutterLanguage')||'en';
  langSelect.addEventListener('change',()=>applyLanguage(langSelect.value));
- // Fill batch design automatically whenever a saved design is selected.
- p5('savedDesignSelect').addEventListener('change',async()=>{
-   try{
-     const id=p5('savedDesignSelect').value;if(!id)return;
-     const all=await libraryRequest('readonly','all'),d=all.find(x=>x.id===id);
-     if(d){p5('batchDesignLabel').value=d.name;p5('saveDesignName').value=d.name;}
-   }catch(e){}
- });
  // Keep preset and target input in sync in both directions.
  p5('batchPreset').addEventListener('change',()=>{
    if(p5('batchPreset').value!=='custom')p5('batchTarget').value=p5('batchPreset').value;
@@ -750,23 +742,6 @@ setLayout('butta');resize();requestAnimationFrame(loop);
    const match=[...p5('batchPreset').options].find(o=>o.value===n);
    p5('batchPreset').value=match?match.value:'custom';
  });
- // Ensure restored batch values are visible in the inputs on page load.
- if(batch.target){
-   p5('batchTarget').value=batch.target;
-   p5('batchPreset').value=['50','100','250','500','1000','5000'].includes(String(batch.target))?String(batch.target):'custom';
-   p5('batchDesignLabel').value=batch.design||'';
-   p5('batchNote').value=batch.note||'';
- }
- // When a saved design is loaded, keep its name linked to the next batch setup.
- const originalRenderBatch=renderBatch;
- renderBatch=function(){
-   originalRenderBatch();
-   const bDone=Number(batch.completed)||0,bTarget=Number(batch.target)||0;
-   if(bTarget>0&&bDone>=bTarget){
-     p5('batchStatus').textContent='✓ Batch completed — target of '+bTarget.toLocaleString()+' sheets reached. Start a new batch when ready.';
-     p5('completeSheetBtn').disabled=true;
-   }
- };
 
  applyLanguage(langSelect.value);
  const languageObserver=new MutationObserver(mutations=>{
